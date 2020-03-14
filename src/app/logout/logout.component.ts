@@ -24,7 +24,9 @@ export class LogoutComponent implements OnInit {
     const headers = new HttpHeaders().set('User-Token', Klic.access);
     this.http.delete(this.url, {headers}).subscribe(
       (data: any) => {
-      Klic.access = "";
+      //this.email = "";
+      //this.password = "";
+      //this.username = "";
         this.router.navigate(["/home"])
       }, (error) =>{
   
