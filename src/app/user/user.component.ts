@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import Klic from '../Klic';
+import Kod from '../Klic';
 
 @Component({
   selector: 'app-user',
@@ -9,16 +9,14 @@ import Klic from '../Klic';
 })
 export class UserComponent implements OnInit {
 
-  public url= "http://85.160.64.233:3000/user";
-  public email= "";
-  public username= "";
-  public id= "";
+private url=" http://85.160.64.233:3000/user";
+private email = '';
+private username = '';
 
   constructor(private http: HttpClient) {
-    const headers = new HttpHeaders().set('User-Token', Klic.access);
+    const headers = new HttpHeaders().set('User-Token', Kod.access);
     this.http.get(this.url, {headers}).subscribe(
       (data: any) => {
-        this.id = data.id;
         this.email = data.email;
         this.username = data.username;
 
@@ -32,5 +30,3 @@ export class UserComponent implements OnInit {
   }
 
 }
-
-
