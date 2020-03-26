@@ -9,6 +9,8 @@ import { UserComponent } from './user/user.component';
 import { LogoutComponent } from './logout/logout.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommentsComponent } from './comments/comments.component';
+import { CommentTableComponent } from './comment-table/comment-table.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     LoginComponent,
     UserComponent,
-    LogoutComponent
+    LogoutComponent,
+    CommentsComponent,
+    CommentTableComponent
   ],
   imports: [
     BrowserModule,

@@ -6,18 +6,17 @@ import {ServiceCheck} from './services.check';
 import Klic from '../Klic';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class UsersService {
 
-  private info: Users = new Users('', '', '');
+  private info: Users = new Users("","","");
 
-
-  constructor(private http: HttpClient, private auth: ServiceCheck) { }
+  constructor(private http: HttpClient, private check: ServiceCheck) { }
 
   getUser() {
     const headers = new HttpHeaders()
-      .set('User-Token', ServiceCheck.token.access_token);
+      .set("User-Token", ServiceCheck.token.access_token);
 
     console.log(ServiceCheck.token.access_token);
 
