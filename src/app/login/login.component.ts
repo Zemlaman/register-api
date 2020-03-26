@@ -20,6 +20,7 @@ private password = "";
   }
 
   clickedButton() {
+    console.log(Klic.access);
     this.http.post(this.url, {email: this.email, password: this.password }).subscribe(
       (data: any) => {
         Klic.access = data.access_token;
