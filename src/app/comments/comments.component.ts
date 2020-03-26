@@ -10,14 +10,20 @@ import Klic from '../Klic';
 })
 export class CommentsComponent implements OnInit {
 private url = "http://85.160.64.233:3000/comments";
-private comment = "";
-private header = new HttpHeaders().set("User-Token", Klic.access)
+private id;
+private comment;
+private header = new HttpHeaders().set("User-Token", Klic.access);
 
   constructor (private http: HttpClient, private router: Router){
 
   }
   clickedButton() {
-    this.http.post(this.url, {comment: this.comment},{  headers: this.header,}).subscribe(
+    let body = {
+      body: this.comment,
+      user_id: this.id,
+    }
+    console.log(this.comment);
+    this.http.post(this.url, body,{headers: this.header,}).subscribe(
       (data: any) => {
         this.router.navigate(["/comment-table"]);
         }, (error) =>{

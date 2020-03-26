@@ -9,21 +9,21 @@ import Kod from '../Klic';
 })
 export class CommentTableComponent implements OnInit {
 
-private url=" http://85.160.64.233:3000/comment";
-private comment = '';
+private url="http://85.160.64.233:3000/comments";
+private body;
 
 constructor(private http: HttpClient) {
-  const headers = new HttpHeaders().set('User-Token', Kod.access);
-  this.http.get(this.url, {headers}).subscribe(
-    (data: any) => {
-      this.comment = data.comment;
-    }, (error) =>{
 
-  }
-  );
  }
 
   ngOnInit() {
+    const headers = new HttpHeaders().set('User-Token', Kod.access);
+    this.http.get(this.url, {body: this.body, headers: this.headers}).subscribe(
+      (data: any) => {
+      }, (error) =>{
+  
+    }
+    );
   }
 
 }

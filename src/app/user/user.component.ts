@@ -12,6 +12,7 @@ export class UserComponent implements OnInit {
 private url=" http://85.160.64.233:3000/user";
 private email = '';
 private username = '';
+private id = '';
 
   constructor(private http: HttpClient) {
     const headers = new HttpHeaders().set('User-Token', Kod.access);
@@ -19,7 +20,7 @@ private username = '';
       (data: any) => {
         this.email = data.email;
         this.username = data.username;
-
+        this.id = data.id;
       }, (error) =>{
   
     }
