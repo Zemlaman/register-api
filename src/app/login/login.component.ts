@@ -24,7 +24,7 @@ private password = "";
     this.http.post(this.url, {email: this.email, password: this.password }).subscribe(
       (data: any) => {
         Klic.access = data.access_token;
-        this.router.navigate(["/user"])
+        this.router.navigate(["/active"])
       }, (error) =>{
   
     }

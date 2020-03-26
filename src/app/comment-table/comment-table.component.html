@@ -1,16 +1,14 @@
-<table class="table table-dark">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Username</th>
-        <th scope="col">Comment</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">{{id}}</th>
-        <td>{{username}}</td>
-        <td>{{comment}}</td>
-      </tr>
-    </tbody>
-  </table>
+<table class="table">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{user.id}}</td>
+    <td>
+      <a routerLink="../user" [queryParams]="{id: user.id}">{{user.username}}</a>
+    </td>
+    <td>{{user.email}}</td>
+  </tr>
+</table>

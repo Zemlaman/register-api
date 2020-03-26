@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import Kod from '../Klic';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -9,25 +8,15 @@ import Kod from '../Klic';
 })
 export class UserComponent implements OnInit {
 
-private url=" http://85.160.64.233:3000/user";
-private email = '';
-private username = '';
-private id = '';
+  private userId: number;
 
-  constructor(private http: HttpClient) {
-    const headers = new HttpHeaders().set('User-Token', Kod.access);
-    this.http.get(this.url, {headers}).subscribe(
-      (data: any) => {
-        this.email = data.email;
-        this.username = data.username;
-        this.id = data.id;
-      }, (error) =>{
-  
-    }
-    );
-   }
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) {
+  }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => this.userId = params.id);
   }
 
 }

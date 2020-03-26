@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ModelsCheck} from '../models/models.check';
+import {ModelsCheck} from './models/models.check';
 import Klic from '../Klic';
 import {LoginComponent} from '../login/login.component';
-import {Users} from '../models/users.models';
+import {Users} from './models/users.models';
 
 
 @Injectable({

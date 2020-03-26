@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import Kod from '../Klic';
+import {User} from '../services/models/user.interface';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -9,21 +9,12 @@ import Kod from '../Klic';
 })
 export class CommentTableComponent implements OnInit {
 
-private url="http://85.160.64.233:3000/comments";
-private body;
+  private users: User[] = [];
 
-constructor(private http: HttpClient) {
-
- }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    const headers = new HttpHeaders().set('User-Token', Kod.access);
-    this.http.get(this.url, {body: this.body, headers: this.headers}).subscribe(
-      (data: any) => {
-      }, (error) =>{
-  
-    }
-    );
+    this.userService.getUsers().subscribe(i => this.users = i.users);
   }
 
 }

@@ -5,22 +5,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
+import { ActiveComponent } from './active/active.component';
 import { LogoutComponent } from './logout/logout.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentTableComponent } from './comment-table/comment-table.component';
+import { UserComponent } from './user/user.component';
+//import { UserfieldComponent } from './userfield/userfield.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    UserComponent,
+    ActiveComponent,
     LogoutComponent,
     CommentsComponent,
-    CommentTableComponent
+    CommentTableComponent,
+    UserComponent,
+    //UserfieldComponent
   ],
   imports: [
     BrowserModule,
