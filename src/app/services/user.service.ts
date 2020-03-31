@@ -1,25 +1,44 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {User} from './models/user.interface';
-import {UsersList} from './models/users-list';
-import {AuthenticationService} from './authentication.service';
-import {httpConfig} from '../config/http-config';
+import Klic from '../Klic';
+import { ReturnedData } from '../return-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  url = 'http://85.160.64.233:3000/';
+  accessToken: string;
+  
 
   constructor(
-    private httpClient: HttpClient,
-    private authenticationService: AuthenticationService
+    private httpClient: HttpClient
   ) { }
 
-  public getUsers(): Observable<UsersList> {
-    const headers = new HttpHeaders()
-      .set('User-Token', this.authenticationService.getToken());
+  getUser() {
+    return this.httpClient.get<ReturnedData>(this.url);
+  }
 
-    return this.httpClient.get<UsersList>(httpConfig.url + '/users', {headers});
+  deleteUser() {
+    const headers = new HttpHeaders().set('User-Token', Klic.access);
+    return this.httpClient.delete(this.url, {headers});
+  }
+
+  registerUser(username1, email1, password1, checkpassword) {
+    return this.httpClient.post(this.url + 'session/register', {
+      username: username1,
+      email: email1,
+      password: password1,
+      password_confirmation: checkpassword
+    });
+  }
+
+  loginUser(email1, password1) {
+    let body = {
+      email: email1,
+      password: password1}
+    return this.httpClient.post<ReturnedData>(this.url + 'session/login', body, {
+      observe: "response"
+    });
   }
 }
