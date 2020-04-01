@@ -11,7 +11,6 @@ export class AppComponent {
 
   constructor(private usersService: UsersService) {
 
-    usersService.getUser().subscribe((data) => {
-    });
+
     }
 }

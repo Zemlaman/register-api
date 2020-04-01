@@ -20,7 +20,7 @@ export class UsersService {
 
     console.log(ServiceCheck.token.access_token);
 
-    return this.http.get<Users>('http://85.160.64.233:3000/user', {headers});
+    return this.http.get<Users>('http://85.160.64.233:3000/users', {headers});
   }
 
 
