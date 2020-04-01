@@ -4,6 +4,7 @@ import {Users} from './models/users.models';
 import {ModelsCheck} from './models/models.check';
 import {ServiceCheck} from './services.check';
 import Klic from '../Klic';
+import { ReturnedData } from '../return-data';
 
 @Injectable({
   providedIn: "root"
@@ -11,6 +12,7 @@ import Klic from '../Klic';
 export class UsersService {
 
   private info: Users = new Users("","","");
+  accessToken: string;
 
   constructor(private http: HttpClient, private check: ServiceCheck) { }
 
