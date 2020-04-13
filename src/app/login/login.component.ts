@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import Klic from '../Klic';
+import { ServiceCheck } from '../services/services.check';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +16,11 @@ private url ="http://85.160.64.233:3000/session/login";
 private email = "";
 private password = "";
 
+myStorage = window.localStorage;
+dataSource: any;
+  ServiceCheck: any;
 
-  constructor (private http: HttpClient, private router: Router){
+  constructor (private http: HttpClient, private router: Router, private userService: UserService){
 
   }
 
@@ -32,6 +37,22 @@ private password = "";
   }
 
   ngOnInit() {
+    if (localStorage.getItem("access-token")) {
+
+      this.ServiceCheck.setToken(localStorage.getItem("access-token"))
+
+      this.router.navigate(["/users"])
+
+    } else {
+      this.router.navigate(["/login"])
+    }
+  }
+
+  localStorage() {
+
+    localStorage.setItem('dataSource', this.dataSource.length);
+
+    console.log(localStorage.getItem('dataSource'));
   }
 
 }

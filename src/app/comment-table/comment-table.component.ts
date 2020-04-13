@@ -17,30 +17,35 @@ export class CommentTableComponent implements OnInit {
   private header = new HttpHeaders();
   private tempUsersArray = [];
   public url = "http://85.160.64.233:3000/users";
+  public page = 0;
 
 
   constructor(private router: Router, private userService: UserService, private httpClient: HttpClient) {
   }
 
+  next(){
+    this.page +1;
+  }
+
+  previous(){
+    this.page -1;
+  }
 
   ngOnInit() {
     this.header = this.header.set('User-Token', Klic.access);
     console.log(ServiceCheck.token.access_token);
     this.httpClient.get<ReturnedData>(this.url, {headers: this.header}).subscribe(
       (data) => {
-        for (let i = 0; i < data.page_count +4; i++) {
-          this.httpClient.get<ReturnedData>(this.url + '?page=' + i, {headers: this.header})
+          this.httpClient.get<ReturnedData>(this.url + '?page=' + this.page, {headers: this.header})
           .subscribe(
             (data) => {
-              this.tempUsersArray = data.users.concat(this.tempUsersArray);
-              this.tempUsersArray = data.users.concat(this.tempUsersArray);
+              this.tempUsersArray = data.users;
               console.log(this.tempUsersArray);
             },
             error => {
               console.log(error);
             }
           );
-        }
       },
       error => {
         if (error.status === 401) {

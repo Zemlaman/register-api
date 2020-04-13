@@ -4,7 +4,7 @@
     <th>Name</th>
     <th>Email</th>
   </tr>
-  <tr *ngFor="let user of users">
+  <tr *ngFor="let user of tempUsersArray">
     <td>{{user.id}}</td>
     <td>
       <a routerLink="../user" [queryParams]="{id: user.id}">{{user.username}}</a>
@@ -12,5 +12,5 @@
     <td>{{user.email}}</td>
   </tr>
 </table>
-
-<button (click)="ngOnInit()">click me<button>
+<button (click) = "previous()">Previous</button> 
+<button (click) = "next()">Next</button> 
