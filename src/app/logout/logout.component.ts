@@ -21,17 +21,9 @@ export class LogoutComponent implements OnInit {
   }
 
   clickedButton() {
-    const headers = new HttpHeaders().set('User-Token', Klic.access);
-    this.http.delete(this.url, {headers}).subscribe(
-      (data: any) => {
-      //this.email = "";
-      //this.password = "";
-      //this.username = "";
-        this.router.navigate(["/home"])
-      }, (error) =>{
-  
-    }
-    );
+    localStorage.clear();
+    Klic.access = undefined;
+        this.router.navigate(["/login"])
   }
 
   ngOnInit() {

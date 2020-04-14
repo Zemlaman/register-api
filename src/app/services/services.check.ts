@@ -27,6 +27,7 @@ export class ServiceCheck {
   }
 
   setToken(token: ModelsCheck) {
+    localStorage.setItem("access-token", token.access_token);
     console.log(token);
     ServiceCheck.token = token;
   }

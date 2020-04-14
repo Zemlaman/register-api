@@ -24,11 +24,39 @@ export class CommentTableComponent implements OnInit {
   }
 
   next(){
-    this.page +1;
+    if(this.page < 0){
+
+    } else {
+      this.page +=1;
+      this.httpClient.get<ReturnedData>(this.url + '?page=' + this.page, {headers: this.header})
+      .subscribe(
+        (data) => {
+          this.tempUsersArray = data.users;
+          console.log(this.tempUsersArray);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   previous(){
-    this.page -1;
+    if(this.page == 0){
+      
+    } else {
+      this.page -=1;
+      this.httpClient.get<ReturnedData>(this.url + '?page=' + this.page, {headers: this.header})
+      .subscribe(
+        (data) => {
+          this.tempUsersArray = data.users;
+          console.log(this.tempUsersArray);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   ngOnInit() {

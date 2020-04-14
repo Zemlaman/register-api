@@ -29,7 +29,8 @@ dataSource: any;
     this.http.post(this.url, {email: this.email, password: this.password }).subscribe(
       (data: any) => {
         Klic.access = data.access_token;
-        this.router.navigate(["/active"])
+        localStorage.setItem("access-token", data.access_token);
+        this.router.navigate(["/active"]);
       }, (error) =>{
   
     }
@@ -38,21 +39,14 @@ dataSource: any;
 
   ngOnInit() {
     if (localStorage.getItem("access-token")) {
+      console.log(localStorage.getItem("access-token"));
+      Klic.access = (localStorage.getItem("access-token"))
 
-      this.ServiceCheck.setToken(localStorage.getItem("access-token"))
-
-      this.router.navigate(["/users"])
+      this.router.navigate(["/active"])
 
     } else {
       this.router.navigate(["/login"])
     }
-  }
-
-  localStorage() {
-
-    localStorage.setItem('dataSource', this.dataSource.length);
-
-    console.log(localStorage.getItem('dataSource'));
   }
 
 }

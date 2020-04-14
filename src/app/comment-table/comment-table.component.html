@@ -12,5 +12,13 @@
     <td>{{user.email}}</td>
   </tr>
 </table>
-<button (click) = "previous()">Previous</button> 
-<button (click) = "next()">Next</button> 
+<nav class="footer" aria-label="Page navigation example">
+  <ul class="pagination pg-blue">
+    <li class="page-item">
+      <a class="page-link" (click) = "previous()">Previous</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" (click) = "next()">Next</a>
+    </li>
+  </ul>
+</nav>
